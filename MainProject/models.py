@@ -17,7 +17,7 @@ class Organizers(models.Model):
     
     def get_img(self):
         if self.pic:
-            return 'http://127.0.0.1:8000/'+self.pic.url
+            return 'https://eastlibya.desert-technology.com.ly/api'+self.pic.url
         
 class Shepherds(models.Model):
     name = models.CharField(max_length=150)
@@ -29,7 +29,7 @@ class Shepherds(models.Model):
     
     def get_img(self):
         if self.pic:
-            return 'http://127.0.0.1:8000/'+self.pic.url
+            return 'https://eastlibya.desert-technology.com.ly/api'+self.pic.url
         
 
 class Schedule(models.Model):
@@ -48,5 +48,5 @@ class Speakers(models.Model):
     
     def get_img(self):
         if self.pic:
-            return 'http://127.0.0.1:8000/'+self.pic.url
+            return 'https://eastlibya.desert-technology.com.ly/api'+self.pic.url
         

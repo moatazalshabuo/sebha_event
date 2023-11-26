@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)kv&6#$yf8u84pjc=d)-wlkxj(gfcl*lb8rp$))hj=e3i#je(r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://eastlibya.desert-technology.com.ly/api','eastlibya.desert-technology.com.ly']
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
@@ -50,12 +50,14 @@ JWT_AUTH = {
 }
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    "https://eastlibya.desert-technology.com.ly",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8080',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    "https://eastlibya.desert-technology.com.ly",
 ]
 
 # Application definition
@@ -116,11 +118,14 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': 'admin',
+        'NAME': 'desertte_east',
+        'USER': 'desertte_desertt',
+        'PASSWORD': 'V+d:50uDok5AL7',
         'HOST':'localhost',
         'PORT':'3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 

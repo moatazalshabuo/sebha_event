@@ -151,15 +151,14 @@ def create_schedule(request):
 def get_schedule(request):
     besc_data = Schedule.objects.all()
     settings = BesicData.objects.first()
-    d1 = settings.from_date
-    d2 = settings.to_date
-    
-    result1 = abs(d2-d1).days + 1
-    print(result1)
     array_of_dates = []
-    
-    for i in range(0,result1):
-        array_of_dates.append(d1+timedelta(days=i))
+    if settings:
+        d1 = settings.from_date
+        d2 = settings.to_date
+        result1 = abs(d2-d1).days + 1
+        print(result1)
+        for i in range(0,result1):
+            array_of_dates.append(d1+timedelta(days=i))
     
     return JsonResponse({'data':ScheduleSirializer(besc_data,many=True).data,'days':array_of_dates})
 

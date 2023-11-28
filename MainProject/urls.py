@@ -31,4 +31,5 @@ urlpatterns = [
     path('update/Speakers/<int:id>',update_Speakers,name='update.Speakers'),
     path('delete/Speakers/<int:id>',delete_Speakers,name='delete.Speakers'),
     #======================================#
+    path('get-all',all_data,name='all_data')
 ]

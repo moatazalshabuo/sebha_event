@@ -212,3 +212,33 @@ def delete_Speakers(request,id):
     besc_data = Speakers.objects.get(pk=id)
     besc_data.delete()
     return JsonResponse({'status':True})
+
+
+@api_view(['GET'])
+@permission_classes([])
+@authentication_classes([])
+
+def all_data(request):
+     settings = BesicData.objects.first()
+     speakers = Speakers.objects.all()
+     shepherds = Shepherds.objects.all()
+     schedule = Schedule.objects.all()
+     organizers = Organizers.objects.all()
+     
+     array_of_dates = []
+     if settings:
+        d1 = settings.from_date
+        d2 = settings.to_date
+        result1 = abs(d2-d1).days + 1
+        print(result1)
+        for i in range(0,result1):
+            array_of_dates.append(d1+timedelta(days=i))
+            
+        return JsonResponse({
+            'settings':BescDataSirializer(settings).data,
+            'speakers':SpeakersSerializer(speakers,many=True).data,
+            'schedule':ScheduleSirializer(schedule,many=True).data,
+            'shepherds':ShepherdsSerializer(shepherds,many=True).data,
+            'organizers':OrganizersSerializer(organizers,many=True).data,
+            'day_of_events':array_of_dates
+        })
